@@ -5,7 +5,10 @@
     <title>Profile</title>
 </head>
 <body>
-
-{{request.user}}
+<a href="/accounts/logout/">LogOut</a><br>
+<br>
+Name : {{request.user.get_full_name}}<br/>
+Email : {{request.user.email}}<br/>
+username : {{request.user.get_username}}<br/>
 </body>
 </html>
