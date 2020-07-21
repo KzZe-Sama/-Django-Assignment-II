@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Roboto+Mono:wght@600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@600&display=swap" rel="stylesheet">
+<style>
+    *
+    {
+        margin: 0px auto;
+    }
+    body{
+        background: lightskyblue;
+    }
+    #form-main{
+        width: 30%;
+        border-radius: 20%;
+        height: 400px;
+        background: aquamarine;
+        overflow: hidden;
+        margin-top: 200px;
+
+    }
+    form{
+        padding: 40px 20%;
+        font-size: 20px;
+        font-family: 'Roboto Mono', monospace;
+    }
+    input
+    {
+        border-radius:5%;
+        height: 40px;
+        width: 300px;
+        font-size: 18px;
+    }
+    button{
+        height: 55px;
+        color: darkblue;
+        font-size: 20px;
+        background: mediumslateblue;
+        width: 140px;
+        margin-top: 30px;
+        text-align: center;
+    }
+    #login{
+        margin-top: 30px;
+        font-size: 30px;
+        text-align: center;
+        font-family: 'Fredoka One', cursive;
+        font-family: 'Roboto Mono', monospace;
+    }
+</style>
+
+<body>
+<div id="form-main">
+    <p id="login">Login</p>
+    <form method="post">
+        {{form.as_p}}
+        <button type="submit">Sign in</button>
+    </form>
+</div>
+
+</body>
+</html>
