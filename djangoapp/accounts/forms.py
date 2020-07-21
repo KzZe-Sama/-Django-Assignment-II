@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 class LoginForm(forms.Form):
-    username=forms.CharField(max_length=150)
+    email=forms.EmailField()
     password=forms.CharField(max_length=128,widget=forms.PasswordInput)
 
 class SignUpForm(forms.Form):
@@ -13,10 +13,10 @@ class SignUpForm(forms.Form):
     confirm_password=forms.CharField(max_length=200,widget=forms.PasswordInput)
 
 
-    def clean_username(self):
-        if User.objects.filter(username=self.cleaned_data['username']).exists():
-            raise forms.ValidationError("User Name already exists.")
-        return self.cleaned_data['username']
+    def clean_email(self):
+        if User.objects.filter(email=self.cleaned_data['email']).exists():
+            raise forms.ValidationError("Email already exists.")
+        return self.cleaned_data['email']
 
     def clean(self):
         password=self.cleaned_data['password']

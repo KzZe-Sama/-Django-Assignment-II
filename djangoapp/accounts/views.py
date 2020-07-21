@@ -1,16 +1,21 @@
 from django.shortcuts import render,redirect
 from .forms import LoginForm,SignUpForm
 from django.contrib.auth import authenticate,login,logout
+from .email_backend import EmailBackend
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import get_user_model
 # Create your views here.
 
+
+USER=get_user_model()
 def login_view(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
             print(form.cleaned_data)
-            user = authenticate(username=form.cleaned_data['username'],
-                                password=form.cleaned_data['password'])
+            back=EmailBackend()
+
+            user = back.authenticate(username=form.cleaned_data['email'],password=form.cleaned_data['password'])
             if user:
                 print(" a user is found", user)
                 login(request, user)
@@ -39,7 +44,7 @@ def signup_view(request):
         form=SignUpForm(request.POST)
         if form.is_valid():
             from django.contrib.auth.models import User
-            user=User(
+            user=USER(
                 username=form.cleaned_data['username'],
                 email=form.cleaned_data['email'],
                 first_name=form.cleaned_data['first_name'],
@@ -56,3 +61,7 @@ def signup_view(request):
         form=SignUpForm()
 
     return render(request,'accounts/register.html',{'form':form})
+
+def reset_password(request):
+    pass
+
