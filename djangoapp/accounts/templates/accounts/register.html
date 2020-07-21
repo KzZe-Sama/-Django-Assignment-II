@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Login</title>
+    <title>Register</title>
 </head>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Roboto+Mono:wght@600&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@600&display=swap" rel="stylesheet">
@@ -19,7 +19,7 @@
     #form-main{
         width: 30%;
         border-radius: 20%;
-        height: 450px;
+        height: 600px;
         background: aquamarine;
         overflow: hidden;
         margin-top: 200px;
@@ -54,40 +54,15 @@
 
         font-family: 'Roboto Mono', monospace;
     }
-    /* unvisited link */
-    a{
-        text-decoration: none;
-    }
-    a:link {
-        color: red;
-    }
-
-    /* visited link */
-    a:visited {
-        color: red;
-    }
-
-    /* mouse over link */
-    a:hover {
-        color: slategrey;
-    }
-
-    /* selected link */
-    a:active {
-        color: slategrey;
-    }
 </style>
 
 <body>
 <div id="form-main">
-    <p id="login">Login</p>
+    <p id="login">Register</p>
     <form method="post">
         {% csrf_token %}
         {{form.as_p}}
-        <button type="submit">Sign in</button>
-        <br>
-        <br>
-        <p><b>New User?</b><a href="/accounts/signup"> Register</a></p>
+        <button type="submit">Sign Up</button>
     </form>
 </div>
 
