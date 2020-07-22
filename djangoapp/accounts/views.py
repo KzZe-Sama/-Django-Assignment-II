@@ -45,10 +45,8 @@ class LoginView(View):
 
 # Soon to be implememnted on class views
 @method_decorator(login_required, name='dispatch')
-class ProfileView(View):
-    template_name = '/accounts/login.html'
-
-
+class ProfileView(TemplateView):
+    template_name = 'accounts/profile.html'
 
 class LogoutView(View):
     def get(self, request):

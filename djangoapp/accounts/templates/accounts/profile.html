@@ -1,16 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends "accounts/base.html" %}
+{% block content %}
 
-    <title>Profile</title>
-</head>
-<body>
-LogOut</a><br>
-<br>
-Name : {{request.user.get_full_name}}<br/>
-Email : {{request.user.email}}<br/>
-username : {{request.user.get_username}}<br/>
-</body>
-</html>
+<style>
+    body {
+        font-family: "Roboto", sans-serif;
+        font-size: 18px;
+        background-color: #fdfdfd;
+    }
+
+    .head_text {
+        color: white;
+    }
+
+    .card {
+        box-shadow: 0 16px 48px #E3E7EB;
+    }
+</style>
+
+
+
+{% if is_paginated %}
+<nav aria-label="Page navigation conatiner"></nav>
+<ul class="pagination justify-content-center">
+    {% if page_obj.has_previous %}
+    <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
+    {% endif %}
+    {% if page_obj.has_next %}
+    <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+
+    {% endif %}
+</ul>
+</nav>
+</div>
+{% endif %}
+{%endblock%}
