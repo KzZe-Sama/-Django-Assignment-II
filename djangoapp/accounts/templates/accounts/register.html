@@ -8,25 +8,27 @@
 </head>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Roboto+Mono:wght@600&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous" />
 <style>
     *
     {
         margin: 0px auto;
     }
     body{
-        background: lightskyblue;
+        background: #ccc;
     }
     #form-main{
-        width: 30%;
+        width: 35%;
         border-radius: 20%;
-        height: 650px;
-        background: aquamarine;
+        height: 800px;
+        background: slategrey;
         overflow: hidden;
-        margin-top: 200px;
+        margin-top: 100px;
 
     }
     form{
-        padding: 30px 25%;
+        padding: 20px 25%;
         font-size: 20px;
         font-family: 'Roboto Mono', monospace;
     }
@@ -39,10 +41,8 @@
     }
     button{
         height: 55px;
-        color: white;
 
         font-size: 20px;
-        background: mediumslateblue;
         width: 140px;
         margin-top: 30px;
         text-align: center;
@@ -69,7 +69,7 @@
     <form method="post">
         {% csrf_token %}
         {{form.as_p}}
-        <button type="submit">Sign Up</button>
+        <button type="submit" class="btn btn-primary">Sign Up</button>
     </form>
 </div>
 

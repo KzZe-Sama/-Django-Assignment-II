@@ -8,19 +8,21 @@
 </head>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Roboto+Mono:wght@600&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous" />
 <style>
     *
     {
         margin: 0px auto;
     }
     body{
-        background: lightskyblue;
+        background: #ccc;
     }
     #form-main{
         width: 30%;
         border-radius: 20%;
-        height: 450px;
-        background: aquamarine;
+        height: 550px;
+        background: slategrey;
         overflow: hidden;
         margin-top: 200px;
 
@@ -39,12 +41,9 @@
     }
     button{
         height: 55px;
-        color: white;
-
         font-size: 20px;
-        background: mediumslateblue;
         width: 140px;
-        margin-top: 30px;
+        margin-top: 20px;
         text-align: center;
     }
     #login{
@@ -59,28 +58,25 @@
         text-decoration: none;
     }
     a:link {
-        color: red;
+        color: #f4f4f4;
     }
 
     /* visited link */
     a:visited {
-        color: red;
+        color: #f4f4f4;
     }
 
     /* mouse over link */
     a:hover {
-        color: slategrey;
+        color: royalblue;
+        text-decoration: none;
     }
 
     /* selected link */
     a:active {
-        color: slategrey;
+        color: royalblue;
     }
-    #message{
-        font-size: 14px;
 
-
-    }
 </style>
 
 <body>
@@ -89,9 +85,9 @@
     <form method="post">
         {% csrf_token %}
         {{form.as_p}}
-        <button type="submit">Sign in</button>
+        <button type="submit" class="btn btn-primary">Sign in</button>
 <!--        if messages need to show like login invalid-->
-
+        <br>
         {% if messages%}
         {% for message in messages %}
            <span style="font-size: 15px;"> {{message}} </span>

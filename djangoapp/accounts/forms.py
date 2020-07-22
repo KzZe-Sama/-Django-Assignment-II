@@ -27,3 +27,5 @@ class SignUpForm(forms.Form):
 
 
 
+class Verify(forms.Form):
+    code=forms.CharField(max_length=4)

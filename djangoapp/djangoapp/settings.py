@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'accounts',
+    'blog',
 ]
 
 MIDDLEWARE = [
@@ -123,3 +124,13 @@ STATIC_URL = '/static/'
 AUTHENTICATION_BACKEND=(
     'accounts.email_backend.EmailBackend',
 )
+
+# Email
+# Using Mail Trap
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.mailtrap.io'
+EMAIL_HOST_USER = '8dae959a387fd7'
+EMAIL_HOST_PASSWORD = '9a3fbaa99da84f'
+EMAIL_PORT = '2525'
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
