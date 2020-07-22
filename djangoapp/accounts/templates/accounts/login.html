@@ -76,6 +76,11 @@
     a:active {
         color: slategrey;
     }
+    #message{
+        font-size: 14px;
+
+
+    }
 </style>
 
 <body>
@@ -85,7 +90,15 @@
         {% csrf_token %}
         {{form.as_p}}
         <button type="submit">Sign in</button>
+<!--        if messages need to show like login invalid-->
+
+        {% if messages%}
+        {% for message in messages %}
+           <span style="font-size: 15px;"> {{message}} </span>
+        {% endfor %}
+        {% endif %}
         <br>
+
         <br>
         <p><b>New User?</b><a href="/accounts/signup"> Register</a></p>
     </form>
