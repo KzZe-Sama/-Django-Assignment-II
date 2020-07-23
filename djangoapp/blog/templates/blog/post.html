@@ -1,0 +1,47 @@
+{% extends "accounts/base.html" %}
+{% block content %}
+
+<style>
+    body {
+        font-family: "Roboto", sans-serif;
+        font-size: 18px;
+        background-color: #fdfdfd;
+    }
+
+    .head_text {
+        color: white;
+    }
+
+    .card {
+        box-shadow: 0 16px 48px #E3E7EB;
+    }
+    img
+    {
+        height: 110px;
+        border-radius: 10%;
+        margin-bottom: 15px;
+    }
+    #message{
+        color: red;
+    }
+</style>
+{% load static%}
+<center>
+    <div class="col-md-4  ">
+        <div class="card my-4" style="height: 600px;">
+            <h5 class="card-header">Post A Blog</h5>
+            <div class="card-body">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{form.as_p}}
+                        <button type="submit">Post</button></form>
+
+
+            </div>
+        </div>
+    </div>
+</center>
+
+
+
+{%endblock%}

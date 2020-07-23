@@ -1,3 +1,4 @@
+from django.core.files.storage import FileSystemStorage
 from django.shortcuts import render, redirect
 from .forms import LoginForm, SignUpForm,Verify
 from django.contrib.auth import authenticate, login, logout
@@ -46,7 +47,31 @@ class LoginView(View):
 # Soon to be implememnted on class views
 @method_decorator(login_required, name='dispatch')
 class ProfileView(TemplateView):
-    template_name = 'accounts/profile.html'
+
+    def get(self,request,*args,**kwargs):
+        return render(request,'accounts/profile.html')
+
+    def post(self,request,*args,**kwargs):
+        if request.FILES:
+            print(request.FILES)
+
+            file_obj=request.FILES['photo']
+            file_name=file_obj.name
+            split_ext=file_name.split('.')
+            ext=split_ext[1]
+            ext=ext.lower()
+            if ext == 'jpg' or ext == 'png' or ext == 'jpeg':
+                # store=FileSystemStorage()
+                # store.save("user-img",file_obj)
+                pass
+
+            else:
+                messages.error(request,'Upload PNG,JPEG/JPG extensions only.')
+            return render(request,'accounts/profile.html')
+        else:
+            messages.error(request,'Please Upload Your Photo First.')
+            return redirect('/accounts/profile/')
+
 
 class LogoutView(View):
     def get(self, request):

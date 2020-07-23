@@ -15,22 +15,44 @@
     .card {
         box-shadow: 0 16px 48px #E3E7EB;
     }
+    img
+    {
+        height: 110px;
+        border-radius: 10%;
+        margin-bottom: 15px;
+    }
+    #message{
+        color: red;
+    }
 </style>
+{% load static%}
+<center>
+    <div class="col-md-4  ">
+        <div class="card my-4" style="height: 600px;">
+            <h5 class="card-header">User Information</h5>
+            <div class="card-body">
+                <img src="{{user.profile.image.url}}">
+                <p class="card-text">{{request.user.get_full_name}} </p>
+                <p class="card-text">First Name : {{request.user.first_name}} </p>
+                <p class="card-text">Last Name : {{request.user.last_name}} </p>
+                <p class="card-text">User Name : {{request.user.username}} </p>
+                <p class="card-text">Email : {{request.user.email}} </p>
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <p><input type="file" id="myFile" name="photo">
+                    <button class="btn btn-danger" type="submit">Change Profile Picture</button></p></form>
+                    <div id="message">{% for message in messages%}
+                        {{message}}
+                        {%endfor%}
+                    </div>
+
+            </div>
+        </div>
+    </div>
+
+</center>
 
 
 
-{% if is_paginated %}
-<nav aria-label="Page navigation conatiner"></nav>
-<ul class="pagination justify-content-center">
-    {% if page_obj.has_previous %}
-    <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
-    {% endif %}
-    {% if page_obj.has_next %}
-    <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
 
-    {% endif %}
-</ul>
-</nav>
-</div>
-{% endif %}
 {%endblock%}

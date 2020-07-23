@@ -9,7 +9,6 @@ https://docs.djangoproject.com/en/3.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
-
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -107,7 +106,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kathmandu'
 
 USE_I18N = True
 
@@ -125,6 +124,8 @@ AUTHENTICATION_BACKEND=(
     'accounts.email_backend.EmailBackend',
 )
 
+MEDIA_URL='/media/'
+MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 # Email
 # Using Mail Trap
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -134,3 +135,6 @@ EMAIL_HOST_PASSWORD = '9a3fbaa99da84f'
 EMAIL_PORT = '2525'
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
+
+
+

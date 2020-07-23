@@ -12,7 +12,6 @@ class SignUpForm(forms.Form):
     password=forms.CharField(max_length=200,widget=forms.PasswordInput)
     confirm_password=forms.CharField(max_length=200,widget=forms.PasswordInput)
 
-
     def clean_email(self):
         if User.objects.filter(email=self.cleaned_data['email']).exists():
             raise forms.ValidationError("Email already exists.")
