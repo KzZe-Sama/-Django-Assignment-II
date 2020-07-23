@@ -33,7 +33,7 @@ class Post(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('article_detail',kwargs={'slug':self.slug})
+        return reverse('update', kwargs={'id': self.id})
 
     def save(self, *args, **kwargs): # new
         if not self.slug:

@@ -9,6 +9,7 @@ from django.utils.decorators import method_decorator
 from django.views import View
 from django.contrib import messages
 from django.core.mail import send_mail
+from .models import Profile
 import random
 from django.views.generic import TemplateView
 
@@ -49,11 +50,12 @@ class LoginView(View):
 class ProfileView(TemplateView):
 
     def get(self,request,*args,**kwargs):
-        return render(request,'accounts/profile.html')
+        profile=Profile.objects.get(user=request.user)
+        return render(request,'accounts/profile.html',{'image':profile})
 
     def post(self,request,*args,**kwargs):
         if request.FILES:
-            print(request.FILES)
+
 
             file_obj=request.FILES['photo']
             file_name=file_obj.name
@@ -61,10 +63,15 @@ class ProfileView(TemplateView):
             ext=split_ext[1]
             ext=ext.lower()
             if ext == 'jpg' or ext == 'png' or ext == 'jpeg':
-                # store=FileSystemStorage()
-                # store.save("user-img",file_obj)
-                pass
-
+                if len(Profile.objects.filter(user=request.user))==0:
+                    profile=Profile(user=str(request.user),image=file_obj)
+                    profile.save()
+                    return redirect('/accounts/profile/')
+                else:
+                    obj=Profile.objects.get(user=request.user)
+                    obj.image=file_obj
+                    obj.save()
+                    return redirect('/accounts/profile/')
             else:
                 messages.error(request,'Upload PNG,JPEG/JPG extensions only.')
             return render(request,'accounts/profile.html')
@@ -98,30 +105,30 @@ class SignupView(View):
 
             )
             v_code=str(random.randint(0,9))+str(random.randint(0,9))+str(random.randint(0,9))+str(random.randint(0,9))
-
+            v_code=int(v_code)
             # Email Verification Mail
-            # subject="Verify Yourself"
-            # message=f"Your Code is :{v_code}"
-            # recp=[form.cleaned_data['email'],]
-            # send_mail(
-            #     subject,
-            #     message,
-            #     'noreply@admin.com',
-            #     recp,
-            #     fail_silently=False,
-            # )
+            subject="Verify Yourself"
+            message=f"Your Code is :{v_code}"
+            recp=[form.cleaned_data['email'],]
+            send_mail(
+                subject,
+                message,
+                'noreply@admin.com',
+                recp,
+                fail_silently=False,
+            )
 
-            # if request.method == "POST":
-            #     form=Verify(request.POST)
-            #     if form.is_valid():
-            #         print(form.cleaned_data['code'])
-            #         return render(request,'accounts/verify.html',{'form':form})
+            if request.method == "POST":
+                form=Verify(request.POST)
+                if form.is_valid():
+                    print(form.cleaned_data['code'])
+                    return render(request,'accounts/verify.html',{'form':form})
 
 
-            user.save()
-            user.set_password(form.cleaned_data['password'])
-            user.save()
-            return redirect('/accounts/login/')
+            # user.save()
+            # user.set_password(form.cleaned_data['password'])
+            # user.save()
+            # return redirect('/accounts/login/')
         return render(request, 'accounts/register.html', {'form': form})
 
 

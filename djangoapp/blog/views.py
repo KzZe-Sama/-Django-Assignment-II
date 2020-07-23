@@ -32,10 +32,17 @@ class BLogPostView(CreateView):
         return super().form_valid(form)
 
 @method_decorator(login_required, name='dispatch')
+class BLogUpdateView(UpdateView):
+    model=Post
+    success_url = "/blog/myblog/"
+    template_name = 'blog/update.html'
+    fields =['title','content','status']
+
+
+@method_decorator(login_required, name='dispatch')
 class DeletePostView(DeleteView):
     model=PostForm
     success_url = "/blog/myblog/"
-
     # only logged user creates this
     def get_queryset(self):
         return Post.objects.filter(author=self.request.user)

@@ -25,12 +25,15 @@
             {% for post in posts %}
             <div class="card mb-4">
                 <div class="card-body">
+                    {% if post.status == 0%}
+                    <b><i>Draft</i></b>
+                    {% endif %}
                     <h2 class="card-title">{{ post.title }}</h2>
                     <p class="card-text">{{post.content}}</p>
                     <p class="card-text">{{post.created_on}}</p>
-                    {% if post.status == 0%}
-                    <p><a class="btn btn-primary"  href="#" style="float: left;">Publish</a></p>
-                    {% endif %}
+                    <p><a class="btn btn-primary"  href="{% url 'update' post.id%}" style="float: left;">Update</a></p>
+
+
                     <p><a class="btn btn-danger"  href="{% url 'delete' post.id %}" style="float: right;">Delete</a></p>
                 </div>
             </div>
