@@ -9,7 +9,7 @@ from django.utils.decorators import method_decorator
 from django.views import View
 from django.contrib import messages
 from django.core.mail import send_mail, EmailMessage
-from .models import Profile, verification_code
+from .models import Profile
 import random
 from django.contrib.auth.models import User
 
