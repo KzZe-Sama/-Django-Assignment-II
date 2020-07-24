@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+</head>
+{% load static%}
+<link href="{%static 'style.css'%}" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+<style>
+    *
+    {
+        margin: 0px auto;
+    }
+
+    #main-container
+    {
+        color: white;
+        height: 300px;
+        width: 50%;
+        margin-top: 15%;
+        padding: 80px 0px;
+    }
+    #main-header{
+        text-align: center;
+        font-size: 60px;
+        margin-top: -50px;
+        margin-left: 30px;
+        font-family: 'Source Code Pro', monospace;
+        text-transform: uppercase;
+
+    }
+    #blog-desc
+    {
+        margin-top: 30px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    li{
+        display: inline-block;
+        margin: 15px 15px;
+
+
+    }
+    #blog-btn{
+        background: mediumslateblue;
+        font-size: 30px;
+        border: black 1px;
+        border-radius: 3%;
+        letter-spacing: 3px;
+        font-family: 'Inconsolata', monospace;
+        width: 150px;
+        padding: 20px 20px;
+    }
+    #blog-btn:hover{
+        background: ghostwhite;
+        color:black;
+
+
+    }
+    #git-btn{
+        background: white;
+        border-radius: 3%;
+        border: black 1px;
+        font-size: 30px;
+        color: black;
+        letter-spacing: 3px;
+        font-family: 'Inconsolata', monospace;
+        width: 190px;
+        padding: 20px 20px;
+    }
+    #git-btn:hover{
+        background: coral;
+    }
+    #quote{
+        text-align: center;
+        margin-top: 10px;
+        margin-left: 30px;
+        font-size: 20px;
+        font-family: 'Source Code Pro', monospace;
+        /*font-style: italic;*/
+        word-spacing: -2px;
+    }
+</style>
+<body>
+<div id="main-container">
+    <p id="main-header">Hello, It's Me Aayush KC</p><br/>
+    <div id="blog-desc">
+        <ul>
+            <a href="{%url 'home'%}"> <li id="blog-btn">Blog</li><a></a>
+            <a href ="https://github.com/KzZe-Sama"><li id="git-btn">My Github</li></a>
+        </ul>
+    </div>
+    <div id="quote">A rainy night with a cup of coffee and programming.</div>
+
+</div>
+</body>
+</html>
