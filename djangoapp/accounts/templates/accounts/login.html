@@ -16,7 +16,7 @@
         margin: 0px auto;
     }
     body{
-        background: #ccc;
+
     }
     #form-main{
         width: 30%;
@@ -28,7 +28,7 @@
 
     }
     form{
-        padding: 40px 25%;
+        padding: 40px 20%;
         font-size: 20px;
         font-family: 'Roboto Mono', monospace;
     }
@@ -58,12 +58,12 @@
         text-decoration: none;
     }
     a:link {
-        color: #f4f4f4;
+        color: #dc281e;
     }
 
     /* visited link */
     a:visited {
-        color: #f4f4f4;
+        color: #dc281e;
     }
 
     /* mouse over link */
@@ -80,25 +80,52 @@
 </style>
 
 <body>
-<div id="form-main">
-    <p id="login">Login</p>
-    <form method="post">
-        {% csrf_token %}
-        {{form.as_p}}
-        <button type="submit" class="btn btn-primary">Sign in</button>
-<!--        if messages need to show like login invalid-->
-        <br>
-        {% if messages%}
-        {% for message in messages %}
-           <span style="font-size: 15px;"> {{message}} </span>
-        {% endfor %}
-        {% endif %}
-        <br>
+<!--<div id="form-main">-->
+<!--    <p id="login">Login</p>-->
+<!--    <form method="post">-->
+<!--        {% csrf_token %}-->
+<!--        {{form.as_p}}-->
+<!--        <button type="submit" class="btn btn-primary">Sign in</button>-->
+<!--&lt;!&ndash;        if messages need to show like login invalid&ndash;&gt;-->
+<!--        <br>-->
+<!--        {% if messages%}-->
+<!--        {% for message in messages %}-->
+<!--           <span style="font-size: 15px;"> {{message}} </span>-->
+<!--        {% endfor %}-->
+<!--        {% endif %}-->
+<!--        <br>-->
 
-        <br>
-        <p><b>New User?</b><a href="/accounts/signup"> Register</a></p>
-    </form>
-</div>
+<!--        <br>-->
+<!--        <p><b>New User?</b><a href="/accounts/signup"> Register</a></p>-->
+<!--    </form>-->
+<!--</div>-->
+<center>
+    <div class="col-md-4" style="margin-top: 100px;" >
+        <div class="card my-4" style="height: 600px; background: lightskyblue">
+            <h5 class="card-header"style="background: white;width: 100%">Login</h5>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    {{form.as_p}}
+                    <button type="submit" class="btn btn-primary">Sign in</button>
+                    <!--        if messages need to show like login invalid-->
+                    <br>
+                    {% if messages%}
+                    {% for message in messages %}
+                    <span style="font-size: 15px;"> {{message}} </span>
+                    {% endfor %}
+                    {% endif %}
+                    <br>
+
+                    <br>
+                    <p><b>New User?</b><a href="/accounts/signup"> Register</a></p>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+</center>
 
 </body>
 </html>

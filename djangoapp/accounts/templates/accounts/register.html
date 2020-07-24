@@ -16,7 +16,6 @@
         margin: 0px auto;
     }
     body{
-        background: #ccc;
     }
     #form-main{
         width: 35%;
@@ -28,7 +27,8 @@
 
     }
     form{
-        padding: 20px 30%;
+
+        padding: 20px 20%;
         font-size: 20px;
         font-family: 'Roboto Mono', monospace;
     }
@@ -64,14 +64,30 @@
 </style>
 
 <body>
-<div id="form-main">
-    <p id="login">Register</p>
-    <form method="post">
-        {% csrf_token %}
-        {{form.as_p}}
-        <button type="submit" class="btn btn-primary">Sign Up</button>
-    </form>
-</div>
+<!--<div id="form-main">-->
+<!--    <p id="login">Register</p>-->
+<!--    <form method="post">-->
+<!--        {% csrf_token %}-->
+<!--        {{form.as_p}}-->
+<!--        <button type="submit" class="btn btn-primary">Sign Up</button>-->
+<!--    </form>-->
+<!--</div>-->
 
+<center>
+    <div class="col-md-4" style="margin-top: 20px;height: 500px;" >
+        <div class="card my-4" style="height: 760px; background: lightskyblue">
+            <h5 class="card-header"style="background: white;width: 100%">Register</h5>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    {{form.as_p}}
+                    <button type="submit" class="btn btn-primary">Sign Up</button>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+</center>
 </body>
 </html>

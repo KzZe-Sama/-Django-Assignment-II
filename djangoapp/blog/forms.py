@@ -8,5 +8,14 @@ class PostForm(ModelForm):
         fields=['title','content','status']
         widgets={
             'title':forms.TextInput(attrs={'class':'form-control'}),
-            'context':forms.Textarea(attrs={'class':'form-control'}),
+            'content':forms.Textarea(attrs={'class':'form-control'}),
+        }
+
+class UpdateForm(ModelForm):
+    class Meta:
+        model=Post
+        fields=['title','content','status']
+        widgets={
+            'title':forms.TextInput(attrs={'class':'form-control'}),
+            'content':forms.Textarea(attrs={'class':'form-control'}),
         }

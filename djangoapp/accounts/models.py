@@ -9,7 +9,7 @@ class Profile(models.Model):
         return f'{self.user} Profile'
 
 class verification_code(models.Model):
-    user=models.EmailField()
+    user=models.EmailField(default="Example@gmail.com")
     code=models.CharField(max_length=4)
 
     def __str__(self):
